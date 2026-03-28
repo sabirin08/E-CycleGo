@@ -8,7 +8,7 @@
 
 ## The Problem
 
-The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** — a 34-minute walk, 15-20 minute bus ride, and a 10-minute car ride from the Student Center, library, and main campus buildings. No college student is busing themselves to properly dispose of a battery with those time. So they throw it in the trash, where lithium batteries cause landfill fires and toxic chemicals like mercury leak into groundwater.
+The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** — a 34-minute walk, 15-20 minute bus ride, and a 10-minute car ride from the Student Center, library, and main campus buildings. No college student is busing themselves to properly dispose of a battery and other e-waste with those long travel times. So they throw it in the trash, where lithium batteries cause landfill fires and toxic chemicals like mercury leak into groundwater.
 
 ## Our Solution
 
