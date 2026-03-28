@@ -694,6 +694,102 @@ const css = `
   .nav-tab-icon { height: 22px; display: flex; align-items: center; }
   .nav-tab-text { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
 
+  /* ===== GUILT TRIP ===== */
+  .guilt-trip {
+    margin: 0 18px 14px;
+    padding: 18px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 16px;
+    text-align: center;
+    animation: guiltFadeIn 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guilt-trip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px
+    );
+  }
+
+  .guilt-skull { font-size: 32px; margin-bottom: 8px; }
+
+  .guilt-year {
+    font-family: 'Outfit', sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    color: #ff6b6b;
+    letter-spacing: -2px;
+    animation: guiltPulse 2s ease-in-out infinite;
+  }
+
+  .guilt-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .guilt-text strong {
+    color: #ff6b6b;
+  }
+
+  .guilt-subtext {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px;
+    font-style: italic;
+  }
+
+  @keyframes guiltPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.03); }
+  }
+
+  @keyframes guiltFadeIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ===== TRASH TALK ===== */
+  .trash-talk {
+    margin: 0 18px 14px;
+    padding: 14px 16px;
+    background: var(--navy);
+    border-radius: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    animation: slideIn 0.5s ease-out 0.3s both;
+  }
+
+  .trash-talk-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+
+  .trash-talk-bubble {
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .trash-talk-label {
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 6px;
+  }
+
   .loader {
     width: 22px; height: 22px;
     border: 3px solid rgba(255,255,255,0.3);
@@ -704,6 +800,70 @@ const css = `
   @keyframes spin { to { transform: rotate(360deg); } }
   .hide { display: none; }
 `;
+
+// ===== TRASH TALK LINES =====
+const TRASH_TALK = {
+  "e-waste": [
+    "You were really about to throw this in the regular trash? In 2026? Bold move.",
+    "This has more toxic chemicals than your ex's personality. Please recycle it.",
+    "Fun fact: this will outlive you, your kids, AND their kids. Bin it properly.",
+    "The landfill called. They said they're full and they don't want your problems.",
+    "Even your groupchat has better disposal habits than this. Come on now.",
+  ],
+  "recyclable": [
+    "You needed AI to tell you this is recyclable? Your 3rd grade teacher is crying.",
+    "Congrats, you've identified something a raccoon could've figured out.",
+    "Breaking news: student discovers recycling exists. More at 11.",
+    "This is literally the tutorial level of recycling. You got this.",
+  ],
+  "compost": [
+    "It's organic waste. You know... it goes back to the earth? Circle of life?",
+    "Hakuna Matata this into a compost bin, Simba.",
+    "Mother Nature would like a word about why this was heading to the trash.",
+  ],
+  "landfill": [
+    "Okay this one actually goes in the trash. Even a broken clock is right twice a day.",
+    "Finally, something that belongs in the garbage. Unlike your recycling habits.",
+    "Trash! For once, the regular bin is the right answer. Mark the calendar.",
+  ],
+};
+
+const getTrashTalk = (category) => {
+  const lines = TRASH_TALK[category] || TRASH_TALK["e-waste"];
+  return lines[Math.floor(Math.random() * lines.length)];
+};
+
+// ===== GUILT TRIP =====
+const GUILT_DATA = {
+  battery: { years: 100, year: 2126, emoji: "🪫", drama: "This battery will still be leaking acid into the ground when your great-great-grandchildren are alive." },
+  charger: { years: 450, year: 2476, emoji: "🔌", drama: "This charger's plastic will still exist when humanity is probably living on Mars." },
+  phone: { years: 1000, year: 3026, emoji: "📱", drama: "This phone will outlast most civilizations. The Roman Empire lasted 500 years. This phone? Double that." },
+  electronics: { years: 500, year: 2526, emoji: "💻", drama: "500 years from now, archaeologists will dig this up and judge your entire generation." },
+  default: { years: 200, year: 2226, emoji: "☠️", drama: "This will be sitting in a landfill while your descendants are wondering why the ocean tastes like mercury." },
+};
+
+const getGuiltData = (itemName) => {
+  const name = (itemName || "").toLowerCase();
+  if (name.includes("batter")) return GUILT_DATA.battery;
+  if (name.includes("charg") || name.includes("cable") || name.includes("cord")) return GUILT_DATA.charger;
+  if (name.includes("phone") || name.includes("iphone") || name.includes("android")) return GUILT_DATA.phone;
+  if (name.includes("laptop") || name.includes("computer") || name.includes("keyboard")) return GUILT_DATA.electronics;
+  return GUILT_DATA.default;
+};
+
+function GuiltTrip({ itemName }) {
+  const guilt = getGuiltData(itemName);
+  return (
+    <div className="guilt-trip">
+      <div className="guilt-skull">{guilt.emoji}</div>
+      <div className="guilt-year">{guilt.year}</div>
+      <div className="guilt-text">
+        That's when this finally decomposes. <strong>{guilt.years} years</strong> from now.
+      </div>
+      <div className="guilt-subtext">{guilt.drama}</div>
+    </div>
+  );
+}
 
 // ===== COMPONENTS =====
 
@@ -793,9 +953,6 @@ function LoginPage({ onLogin }) {
           Continue with Google
         </button>
 
-        <div className="login-footer">
-          By continuing, you agree to E-CycleGo's Terms of Service
-        </div>
       </div>
     </div>
   );
@@ -900,6 +1057,14 @@ function ScanPage({ goTo }) {
             <div className="impact-row">
               <div className="impact-box"><div className="impact-val">{result.stat1?.value}</div><div className="impact-lbl">{result.stat1?.label}</div></div>
               <div className="impact-box"><div className="impact-val">{result.stat2?.value}</div><div className="impact-lbl">{result.stat2?.label}</div></div>
+            </div>
+          </div>
+          {result.isEwaste && <GuiltTrip itemName={result.itemName} />}
+          <div className="trash-talk">
+            <div className="trash-talk-avatar">🤖</div>
+            <div>
+              <div className="trash-talk-bubble">{getTrashTalk(result.category)}</div>
+              <div className="trash-talk-label">E-CycleGo Trash Talk</div>
             </div>
           </div>
           <div className="nearest-strip" onClick={() => goTo("map")}>
