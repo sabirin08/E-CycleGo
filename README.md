@@ -2,7 +2,7 @@
 
 **AI-powered e-waste recycling for Georgia State University**
 
-> Built for the Social Good Hackathon — Driving sustainable, positive impact for local communities.
+> Built for the Hacklanta Hackathon — Driving sustainable, positive impact for local communities.
 
 ---
 
