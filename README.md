@@ -80,7 +80,7 @@ Once running, find your computer's local IP (e.g., `192.168.x.x`) and open `http
 ## Project Structure
 
 ```
-ecotrack-gsu/
+E-CycleGo/
 ├── public/
 │   └── index.html
 ├── server/
