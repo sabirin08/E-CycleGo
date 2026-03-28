@@ -6,13 +6,9 @@
 
 ---
 
-## The Problem
-
-The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** — a 34-minute walk, 15-20 minute bus ride, and a 10-minute car ride from the Student Center, library, and main campus buildings. No college student is busing themselves to properly dispose of a battery and other e-waste with those long travel times. So they throw it in the trash, where lithium batteries cause landfill fires and toxic chemicals like mercury leak into groundwater.
-
 ## Our Solution
 
-**E-CycleGo** is a mobile-first web app that:
+**E-CycleGo GSU** is a mobile-first web app that:
 
 1. **Scans & Identifies** — Students photograph any item they're unsure how to dispose of. Our AI (powered by Claude's vision API) identifies the item, explains *why* improper disposal is harmful, and directs them to the nearest correct bin.
 
@@ -68,14 +64,14 @@ Once running, find your computer's local IP (e.g., `192.168.x.x`) and open `http
 
 | Feature | Description |
 |---|---|
-| AI Scan | Photograph any item → get instant disposal guidance |
-| Campus Map | Find the nearest e-waste bin with walking distance |
-| Bin Progress | See each bin's monthly goal and which bins need help |
-| Upvote Bins | Vote for where new bins should be placed on campus |
-| Streaks | Track your daily recycling streak |
-| Tier System | Level up from Green Starter to Planet Guardian |
-| Impact Stats | See your personal environmental impact in real numbers |
-| Campus Goal | Collective monthly target with rewards for all users |
+| 📸 AI Scan | Photograph any item → get instant disposal guidance |
+| 🗺️ Campus Map | Find the nearest e-waste bin with walking distance |
+| 📊 Bin Progress | See each bin's monthly goal and which bins need help |
+| ▲ Upvote Bins | Vote for where new bins should be placed on campus |
+| 🔥 Streaks | Track your daily recycling streak |
+| 🌿 Tier System | Level up from Green Starter to Planet Guardian |
+| 📈 Impact Stats | See your personal environmental impact in real numbers |
+| 🎯 Campus Goal | Collective monthly target with rewards for all users |
 
 ## Project Structure
 
@@ -95,4 +91,9 @@ ecotrack-gsu/
 ```
 
 ## Team
-Sabirin Mohamed & Tran Le
+
+Built by GSU Panthers, Sabirin Mohamed & Tran Le
+
+## License
+
+MIT
