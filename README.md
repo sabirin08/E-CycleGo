@@ -95,9 +95,4 @@ ecotrack-gsu/
 ```
 
 ## Team
-Sabirin Mohamed
-Tran Le
-
-## License
-
-MIT
+Sabirin Mohamed & Tran Le
