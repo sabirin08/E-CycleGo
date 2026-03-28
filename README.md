@@ -40,8 +40,8 @@ The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** 
 
 ```bash
 # Clone the repo
-git clone https://github.com/YOUR_USERNAME/ecotrack-gsu.git
-cd ecotrack-gsu
+git clone https://github.com/sabirin08/E-CycleGo.git
+cd E-CycleGo
 
 # Install dependencies
 npm install
