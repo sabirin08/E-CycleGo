@@ -12,7 +12,7 @@ The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** 
 
 ## Our Solution
 
-**GSUpcycle GSU** is a mobile-first web app that:
+**E-CycleGo** is a mobile-first web app that:
 
 1. **Scans & Identifies** — Students photograph any item they're unsure how to dispose of. Our AI (powered by Claude's vision API) identifies the item, explains *why* improper disposal is harmful, and directs them to the nearest correct bin.
 
