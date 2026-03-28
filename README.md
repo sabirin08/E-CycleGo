@@ -98,6 +98,3 @@ ecotrack-gsu/
 
 Built by GSU Panthers, Sabirin Mohamed & Tran Le
 
-## License
-
-MIT
