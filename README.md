@@ -1,4 +1,4 @@
-# ♻️ E-CycleGo
+# ♻️🐾 E-CycleGo
 
 **AI-powered e-waste recycling for Georgia State University**
 
@@ -96,5 +96,5 @@ ecotrack-gsu/
 
 ## Team
 
-Built by GSU Panthers, Sabirin Mohamed & Tran Le 🐾💙
+Built by GSU Panthers, Sabirin Mohamed & Tran Le
 
