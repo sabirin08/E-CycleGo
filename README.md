@@ -68,14 +68,14 @@ Once running, find your computer's local IP (e.g., `192.168.x.x`) and open `http
 
 | Feature | Description |
 |---|---|
-| 📸 AI Scan | Photograph any item → get instant disposal guidance |
-| 🗺️ Campus Map | Find the nearest e-waste bin with walking distance |
-| 📊 Bin Progress | See each bin's monthly goal and which bins need help |
-| ▲ Upvote Bins | Vote for where new bins should be placed on campus |
-| 🔥 Streaks | Track your daily recycling streak |
-| 🌿 Tier System | Level up from Green Starter to Planet Guardian |
-| 📈 Impact Stats | See your personal environmental impact in real numbers |
-| 🎯 Campus Goal | Collective monthly target with rewards for all users |
+| AI Scan | Photograph any item → get instant disposal guidance |
+| Campus Map | Find the nearest e-waste bin with walking distance |
+| Bin Progress | See each bin's monthly goal and which bins need help |
+| Upvote Bins | Vote for where new bins should be placed on campus |
+| Streaks | Track your daily recycling streak |
+| Tier System | Level up from Green Starter to Planet Guardian |
+| Impact Stats | See your personal environmental impact in real numbers |
+| Campus Goal | Collective monthly target with rewards for all users |
 
 ## Project Structure
 
