@@ -96,5 +96,5 @@ ecotrack-gsu/
 
 ## Team
 
-Built by GSU Panthers, Sabirin Mohamed & Tran Le
+Built by GSU Panthers, Sabirin Mohamed & Tran Le 🐾💙
 
