@@ -2,8 +2,7 @@
 
 **AI-powered e-waste recycling for Georgia State University**
 
-> Built for Hacklanta 2026 🎰 — Cox Enterprises Social Good Challenge
-— Driving sustainable, positive impact for local communities.
+> Built for Hacklanta 2026 🎰 — Cox Enterprises Social Good Challenge — Driving sustainable, positive impact for local communities.
 
 ---
 
