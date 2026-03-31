@@ -1,4 +1,4 @@
-# ♻️ E-CycleGo 
+# ♻️ E-CycleGo
 
 **AI-powered e-waste recycling for Georgia State University**
 
