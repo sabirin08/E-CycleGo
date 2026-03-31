@@ -1133,14 +1133,19 @@ function FallbackMap({ selectedBin, onSelectBin }) {
 
 function GoogleMap() {
   const key = process.env.REACT_APP_GOOGLE_MAPS_KEY;
+  const markers = BIN_LOCATIONS.map((b) => {
+    const color = b.status === "active" ? "green" : "orange";
+    const label = b.name[0];
+    return `markers=color:${color}|label:${label}|${b.lat},${b.lng}`;
+  }).join("&");
+  const src = `https://maps.googleapis.com/maps/api/staticmap?center=33.754,-84.392&zoom=15&size=800x520&scale=2&maptype=roadmap&${markers}&key=${key}`;
+
   return (
-    <div className="map-frame" style={{ minHeight: 260 }}>
-      <iframe
-        title="GSU Campus"
-        src={`https://www.google.com/maps/embed/v1/view?key=${key}&center=33.754,-84.389&zoom=15&maptype=roadmap`}
-        style={{ width: "100%", height: "100%", border: "none", borderRadius: 18 }}
-        loading="lazy"
-        allowFullScreen
+    <div className="map-frame" style={{ minHeight: 260, overflow: "hidden" }}>
+      <img
+        src={src}
+        alt="GSU Campus Map"
+        style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 18 }}
       />
     </div>
   );
