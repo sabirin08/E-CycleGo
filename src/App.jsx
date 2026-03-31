@@ -1131,14 +1131,83 @@ function FallbackMap({ selectedBin, onSelectBin }) {
   return <canvas ref={canvasRef} className="map-frame" style={{ cursor: "pointer", width: "100%" }} onClick={handleClick} />;
 }
 
+function GoogleMap({ selectedBin, onSelectBin }) {
+  const mapRef = useRef(null);
+  const mapObjRef = useRef(null);
+  const markersRef = useRef([]);
+
+  useEffect(() => {
+    if (window.google?.maps) { initMap(); return; }
+    const key = process.env.REACT_APP_GOOGLE_MAPS_KEY || "";
+    if (!key) return;
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}`;
+    script.async = true;
+    script.onload = () => initMap();
+    document.head.appendChild(script);
+  }, []);
+
+  const initMap = () => {
+    if (!mapRef.current || mapObjRef.current) return;
+    const map = new window.google.maps.Map(mapRef.current, {
+      center: { lat: 33.7540, lng: -84.3900 },
+      zoom: 15,
+      disableDefaultUI: true,
+      zoomControl: true,
+      styles: [
+        { elementType: "geometry", stylers: [{ color: "#f0f4f8" }] },
+        { featureType: "road", elementType: "geometry", stylers: [{ color: "#e0e5ec" }] },
+        { featureType: "water", elementType: "geometry", stylers: [{ color: "#c9d6e3" }] },
+        { featureType: "poi.park", elementType: "geometry", stylers: [{ color: "#d4edda" }] },
+        { featureType: "poi", elementType: "labels", stylers: [{ visibility: "off" }] },
+      ],
+    });
+    mapObjRef.current = map;
+
+    BIN_LOCATIONS.forEach((bin) => {
+      const isActive = bin.status === "active";
+      const marker = new window.google.maps.Marker({
+        position: { lat: bin.lat, lng: bin.lng },
+        map,
+        title: bin.name,
+        icon: {
+          path: window.google.maps.SymbolPath.CIRCLE,
+          scale: 12,
+          fillColor: isActive ? "#16a34a" : "#d97706",
+          fillOpacity: 1,
+          strokeColor: "#ffffff",
+          strokeWeight: 3,
+        },
+      });
+
+      const info = new window.google.maps.InfoWindow({
+        content: `<div style="color:#002856;font-family:sans-serif;padding:4px;"><strong>${bin.name}</strong><br/><span style="font-size:12px;color:#666;">${bin.distance} · ${isActive ? "Active" : "Proposed"}</span><br/><span style="font-size:12px;color:#16a34a;font-weight:600;">${bin.current}/${bin.goal} items this month</span></div>`,
+      });
+
+      marker.addListener("click", () => { info.open(map, marker); onSelectBin(bin.id); });
+      markersRef.current.push(marker);
+    });
+  };
+
+  useEffect(() => {
+    if (!selectedBin || !mapObjRef.current) return;
+    const bin = BIN_LOCATIONS.find((b) => b.id === selectedBin);
+    if (bin) { mapObjRef.current.panTo({ lat: bin.lat, lng: bin.lng }); mapObjRef.current.setZoom(17); }
+  }, [selectedBin]);
+
+  return <div ref={mapRef} className="map-frame" style={{ minHeight: 260 }} />;
+}
+
 function MapPage() {
   const [votes, setVotes] = useState({});
   const [sel, setSel] = useState(null);
+  const hasKey = !!(process.env.REACT_APP_GOOGLE_MAPS_KEY);
+
 
   return (
     <div className="page">
       <div className="section-label"><RecycleIcon size={20} /> E-Waste Bins on Campus</div>
-      <FallbackMap selectedBin={sel} onSelectBin={setSel} />
+      {hasKey ? <GoogleMap selectedBin={sel} onSelectBin={setSel} /> : <FallbackMap selectedBin={sel} onSelectBin={setSel} />}
       <div className="legend-row"><span className="legend-chip legend-active">Active</span><span className="legend-chip legend-proposed">Proposed</span></div>
       <div className="section-label">Bin Locations & Progress</div>
       <div className="bins-list">
