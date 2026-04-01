@@ -1,5 +1,5 @@
 # ♻️ E-CycleGo
-
+ 
 **AI-powered e-waste recycling for Georgia State University**
 
 > Built for Hacklanta 2026 🎰 — Cox Enterprises House Pick: SOCIAL GOOD — Build an AI-powered solution that drives sustainable, positive impact for local communities and the world around us.
