@@ -3,17 +3,3 @@
   "outputDirectory": "build",
   "framework": "create-react-app"
 }
-```
-
-Save.
-
-**Step 3: Update App.jsx to use the right API URL**
-
-The scan currently calls `http://localhost:3001/api/scan`. On Vercel it needs to call `/api/scan`. Open your App.jsx on GitHub (pencil icon) and find this line:
-```
-const res = await fetch("http://localhost:3001/api/scan",
-```
-
-Change it to:
-```
-const res = await fetch("/api/scan",
