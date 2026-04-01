@@ -2,8 +2,11 @@
 
 **AI-powered e-waste recycling for Georgia State University**
 
-> Built for Hacklanta 2026 🎰 — Cox Enterprises Social Good Challenge — Driving sustainable, positive impact for local communities.
+> Built for Hacklanta 2026 🎰 — Cox Enterprises House Pick: SOCIAL GOOD — Build an AI-powered solution that drives sustainable, positive impact for local communities and the world around us.
 
+**Live Demo:** [e-cycle-go.vercel.app](https://e-cycle-go.vercel.app)
+
+---
 
 ## The Problem
 
@@ -15,18 +18,38 @@ The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** 
 
 1. **Scans & Identifies** — Students photograph any item they're unsure how to dispose of. Our AI (powered by Claude's vision API) identifies the item, explains *why* improper disposal is harmful, and directs them to the nearest correct bin.
 
-2. **Maps Accessible Bins** — Shows current and proposed e-waste bin locations across campus. Students can **upvote** proposed locations, generating real data for GSU facilities management about where bins are most needed.
+2. **Maps Accessible Bins** — Shows current and proposed e-waste bin locations across campus with an interactive Google Maps view. Students can **upvote** proposed locations, generating real data for GSU facilities management about where bins are most needed.
 
 3. **Tracks Collective Impact** — Each bin has its own progress bar toward a monthly recycling goal. When the campus collectively hits the target, all app users earn a reward (bookstore credit, etc.). This turns recycling from an individual chore into a community challenge.
 
 4. **Measures Personal Impact** — Students see their environmental footprint: mercury prevented from groundwater, decomposition time saved, CO₂ reduced, landfill fire risks avoided. A tier system (Green Starter → Planet Guardian) and streak tracking keep them engaged.
 
+5. **Trash Talk & Guilt Trip** — A fun bonus feature: the app roasts users for improper disposal and shows dramatic timelines of how long items take to decompose. Built for the Most Useless/Funny Feature prize.
+
+
 ## Tech Stack
 
-- **Frontend**: React 18 (mobile-first responsive design)
-- **AI Vision**: Anthropic Claude API (image identification + disposal guidance)
-- **Styling**: Custom CSS with GSU brand colors (Navy Blue #002856 + White)
-- **Maps**: Google Maps Embed API
+- **Frontend:** React 18 (mobile-first responsive design)
+- **AI Vision:** Anthropic Claude API (image identification + disposal guidance)
+- **Backend:** Express.js proxy server / Vercel Serverless Functions
+- **Styling:** Custom CSS with GSU brand colors (Navy Blue #002856 + White)
+- **Maps:** Google Maps Static API with colored bin markers
+- **Deployment:** Vercel
+
+## Features
+
+| Feature | Description |
+|---|---|
+| AI Scan | Photograph any item → get instant AI-powered disposal guidance |
+| Campus Map | Interactive Google Maps with colored pins for each bin location |
+| Bin Progress | See each bin's monthly goal and which bins need help |
+| Upvote Bins | Vote for where new bins should be placed on campus |
+| Streaks | Track your daily recycling streak |
+| Tier System | Level up from Green Starter to Planet Guardian |
+| Impact Stats | See your personal environmental impact in real numbers |
+| Campus Goal | Collective monthly target with rewards for all users |
+| Trash Talk | AI roasts you for your recycling habits |
+| Guilt Trip | Dramatic countdown showing how long your item will outlive you |
 
 ## Getting Started
 
@@ -34,8 +57,9 @@ The nearest e-waste disposal bin for GSU students is at **Center Parc Stadium** 
 
 - Node.js 16+
 - An Anthropic API key ([get one here](https://console.anthropic.com))
+- A Google Maps API key ([get one here](https://console.cloud.google.com))
 
-### Setup
+### Local Development
 
 ```bash
 # Clone the repo
@@ -46,48 +70,37 @@ cd E-CycleGo
 npm install
 
 # Create your environment file
-cp .env.example .env
-# Edit .env and add your Anthropic API key
+nano .env
+# Add your keys:
+# ANTHROPIC_API_KEY=your-key-here
+# REACT_APP_GOOGLE_MAPS_KEY=your-google-key-here
 
 # Start both the API server and React app
 npm run dev
 ```
 
-This runs two things simultaneously:
+This runs:
 - **React frontend** on `http://localhost:3000`
-- **API proxy server** on `http://localhost:3001` (keeps your API key secure)
+- **Express API server** on `http://localhost:3001`
 
-### Demo on Your Phone
+### Live Deployment
 
-Once running, find your computer's local IP (e.g., `192.168.x.x`) and open `http://192.168.x.x:3000` on your phone. The camera capture will use your phone's back camera.
-
-> **Note:** For phone testing, update the CORS origin in `server/index.js` to include your local IP, or set it to `"*"` during development.
-
-## Features
-
-| Feature | Description |
-|---|---|
-| AI Scan | Photograph any item → get instant disposal guidance |
-| Campus Map | Find the nearest e-waste bin with walking distance |
-| Bin Progress | See each bin's monthly goal and which bins need help |
-| Upvote Bins | Vote for where new bins should be placed on campus |
-| Streaks | Track your daily recycling streak |
-| Tier System | Level up from Green Starter to Planet Guardian |
-| Impact Stats | See your personal environmental impact in real numbers |
-| Campus Goal | Collective monthly target with rewards for all users |
+The app is deployed on Vercel at [e-cycle-go.vercel.app](https://e-cycle-go.vercel.app). The API runs as a Vercel serverless function.
 
 ## Project Structure
 
 ```
 E-CycleGo/
+├── api/
+│   └── scan.js             # Vercel serverless function for AI scan
 ├── public/
 │   └── index.html
 ├── server/
-│   └── index.js           # Express proxy (keeps API key secure)
+│   └── index.js            # Express proxy for local development
 ├── src/
 │   ├── App.jsx             # Main app with all components
 │   └── index.js            # Entry point
-├── .env.example            # Environment variable template
+├── vercel.json             # Vercel deployment config
 ├── .gitignore
 ├── package.json
 └── README.md
