@@ -100,11 +100,11 @@ E-CycleGo/
 ├── src/
 │   ├── App.jsx             # Main app with all components
 │   └── index.js            # Entry point
-├── vercel.json             # Vercel deployment config
 ├── .gitignore
+├── README.md
 ├── package.json
-└── README.md
-```
+├── package-lock.json
+└── vercel.json             # Vercel deployment config
 
 ## Team
 
