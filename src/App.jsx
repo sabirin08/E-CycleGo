@@ -996,7 +996,7 @@ function ScanPage({ goTo }) {
     if (!imgData) return;
     setBusy(true);
     try {
-      const res = await fetch("http://localhost:3001/api/scan", {
+      const res = await fetch("/api/scan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imageBase64: imgData.b64, mediaType: imgData.type }),
