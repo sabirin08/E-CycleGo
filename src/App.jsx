@@ -1237,6 +1237,11 @@ export default function App() {
   const [page, setPage] = useState("scan");
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+  
+
+  useEffect(() => {
     const el = document.createElement("style");
     el.textContent = css;
     document.head.appendChild(el);
